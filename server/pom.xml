@@ -27,6 +27,12 @@
     </dependency>
 
     <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>s3</artifactId>
+      <!-- version number is not needed due to the BOM below -->
+    </dependency>
+
+    <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-server</artifactId>
       <version>1.19.4</version>
@@ -67,6 +73,18 @@
     </dependency>
 
     <dependency>
+      <groupId>org.netpreserve.commons</groupId>
+      <artifactId>webarchive-commons</artifactId>
+      <version>1.1.9</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.12.1</version>
+    </dependency>
+
+    <dependency>
       <groupId>software.amazon.awssdk</groupId>
       <artifactId>apache-client</artifactId>
       <!-- version number is not needed due to the BOM below -->
@@ -87,6 +105,12 @@
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
       <version>20190722</version>
+    </dependency>
+
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>apache-client</artifactId>
+      <!-- version number is not needed due to the BOM below -->
     </dependency>
   </dependencies>
 

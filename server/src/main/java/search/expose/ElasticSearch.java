@@ -40,7 +40,6 @@ public class ElasticSearch extends AwsSignedRestRequest{
                 System.getenv("ELASTIC_SEARCH_HOST"),
                 System.getenv("ELASTIC_SEARCH_INDEX") + "/_doc/",
                 Optional.empty(), json);
-        System.out.println(response.toString());
         response.responseBody().get().close();
     }
 

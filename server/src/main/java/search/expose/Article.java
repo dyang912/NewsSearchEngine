@@ -15,6 +15,12 @@ public class Article {
         this.lang = lang;
     }
 
+    public Article(String title, String url, String txt) {
+        this.title = title;
+        this.url = url;
+        this.txt = txt;
+    }
+
     public String getTitle() {
         return title;
     }
