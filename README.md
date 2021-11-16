@@ -1,6 +1,6 @@
 News Search Engine
 =============
-This is a simplified news search engine like google.com
+This is a simplified news search engine based on AWS
 
 To Run
 ======
