@@ -1,6 +1,6 @@
 News Search Engine
 =============
-This is a simplified news search engine based on AWS
+A simplified news search application based on ReactJS and AWS
 
 To Run
 ======
