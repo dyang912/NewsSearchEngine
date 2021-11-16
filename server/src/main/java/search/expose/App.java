@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class App {
@@ -84,7 +85,7 @@ public class App {
                     }
 
                     byte[] b = new byte[2];
-                    StringBuilder sb = new StringBuilder("");
+                    StringBuilder sb = new StringBuilder();
                     while (archiveRecord.read(b) != -1) {
                         sb.append(new String(b));
                     }
@@ -93,11 +94,13 @@ public class App {
                     String src = sb.toString();
                     String[] html = src.split("\r\n\r\n");
                     Document document = Jsoup.parse(html[1]);
-                    Article article = new Article(
-                            document.title(),
-                            archiveRecord.getHeader().getUrl(),
-                            document.text());
-                    list.add(article);
+                    if (document.select("html").attr("lang").toLowerCase(Locale.ROOT).equals("en")) {
+                        Article article = new Article(
+                                document.title(),
+                                archiveRecord.getHeader().getUrl(),
+                                document.text());
+                        list.add(article);
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
