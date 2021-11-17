@@ -10,13 +10,13 @@ The following environment variables must be set:
 * COMMON_CRAWL_FILENAME (Upload Data needed)
 
 To Upload Data
-======
+==============
 ```
 $ mvn package exec:java -Dexec.mainClass="search.expose.App"
 ```
 
 To Run Server
-======
+=============
 ```
 $ mvn clean package tomcat7:run
 ```
