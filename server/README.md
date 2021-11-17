@@ -9,11 +9,13 @@ The following environment variables must be set:
 * ELASTIC_SEARCH_INDEX
 * COMMON_CRAWL_FILENAME (Upload Data needed)
 
+
 To Upload Data
 ==============
 ```
 $ mvn package exec:java -Dexec.mainClass="search.expose.App"
 ```
+
 
 To Run Server
 =============
@@ -24,6 +26,7 @@ or to use Tomcat 8.5:
 ```
 $ mvn clean package cargo:run
 ```
+
 
 References
 ==========
