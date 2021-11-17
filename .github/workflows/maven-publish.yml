@@ -7,8 +7,7 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'server/**'
+
 
 jobs:
   build:
@@ -36,5 +35,5 @@ jobs:
       run: mvn deploy --settings settings.xml --file pom.xml
       working-directory: server
       env:
-        GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+        GITHUB_USERNAME: ${{ secrets.USERNAME }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
