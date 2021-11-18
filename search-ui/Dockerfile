@@ -10,7 +10,8 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 COPY package.json ./
 COPY package-lock.json ./
-RUN export NODE_OPTIONS=--openssl-legacy-provider && npm build && npm install --production
+RUN export NODE_OPTIONS=--openssl-legacy-provider
+RUN npm install --production
 COPY . ./
 
 CMD ["npm", "start"]
