@@ -4,7 +4,8 @@ LABEL org.opencontainers.image.source="https://github.com/dyang912/NewsSearchEng
 
 WORKDIR /app
 COPY package.json ./
+COPY package-lock.json ./
 RUN npm install
-COPY . .
+COPY . ./
 CMD ["npm", "start"]
 
