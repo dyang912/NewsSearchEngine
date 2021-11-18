@@ -1,5 +1,5 @@
 const Constants = {
-    SERVER_URL: 'http://localhost:8082'
+    SERVER_URL: 'http://18.116.5.34:8082'
 }
 
 export default Constants
