@@ -4,8 +4,7 @@ on:
   push:
     branches: 
       - master
-    paths:
-      - 'search-ui/**'
+
 
 jobs:
 
@@ -21,8 +20,8 @@ jobs:
 
     - name: Build the latest Docker image
       working-directory: search-ui
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag dyang912/search-ui:$(date +%s)
     
     - name: Push the latest Docker image
       working-directory: search-ui
-      run: docker push my-image-name:$(date +%s)
+      run: docker push dyang912/search-ui:$(date +%s)
