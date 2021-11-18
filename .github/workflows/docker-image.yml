@@ -20,8 +20,8 @@ jobs:
 
     - name: Build the latest Docker image
       working-directory: search-ui
-      run: docker build . --file Dockerfile --tag dyang912/search-ui:$(date +%s)
+      run: docker build . --file Dockerfile --tag dyang912/search-ui:$(date -I)
     
     - name: Push the latest Docker image
       working-directory: search-ui
-      run: docker push dyang912/search-ui:$(date +%s)
+      run: docker push dyang912/search-ui:$(date -I)
