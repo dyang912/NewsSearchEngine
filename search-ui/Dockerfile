@@ -10,7 +10,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 COPY package.json ./
 COPY package-lock.json ./
-RUN export NODE_OPTIONS=--openssl-legacy-provider && yarn build && yarn install --production --ignore-scripts --prefer-offline
+RUN export NODE_OPTIONS=--openssl-legacy-provider && npm build && npm install --production
 COPY . ./
 
 CMD ["npm", "start"]
