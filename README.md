@@ -1,6 +1,7 @@
 News Search Engine
 =============
-A simplified news search application based on ReactJS and AWS
+A simplified news search application based on JAVA, ReactJS, and AWS <br/> 
+Already deployed [here](http://www.dongyang.cyou)
 
 To Run
 ======
