@@ -4,6 +4,7 @@ import { Pagination, DatePicker, Checkbox, Card, Empty } from 'antd'
 import { useSetState } from 'ahooks'
 import React, { useRef } from 'react';
 import Highlighter from "react-highlight-words";
+import logo from "../images/LOGO.png"
 
 const App = ({ serverUrl }) => {
     const [state, setState] = useSetState({
@@ -35,19 +36,24 @@ const App = ({ serverUrl }) => {
     return (
         <div className={'wrap'} ref={wrap}>
             {!state.init ?
-                <div className={'search'}>
-                    <Search
-                        serverUrl={serverUrl}
-                        onResultChange={(data, query) => {
-                            setState({init: true, results: data.articles, total: data.total_results, query})
-                        }}
-                        onReset={() => {
-                            setParams({offset: 0})
-                            setState({page: 1})
-                        }}
-                        params={params}
-                    />
-                </div> :
+                <table className={'search'}>
+                    <tr>
+                        <img src={logo} alt={""} className={'logo'}/>
+                    </tr>
+                    <tr>
+                        <Search
+                            serverUrl={serverUrl}
+                            onResultChange={(data, query) => {
+                                setState({init: true, results: data.articles, total: data.total_results, query})
+                            }}
+                            onReset={() => {
+                                setParams({offset: 0})
+                                setState({page: 1})
+                            }}
+                            params={params}
+                        />
+                    </tr>
+                </table> :
 
                 <div className={'result'}>
                     <Search
@@ -78,7 +84,7 @@ const App = ({ serverUrl }) => {
                         <span style={{marginLeft: 20}}>Date:</span>
                         <DatePicker format={'YYYY-MM-DD'} onChange={(date, dateString) => setParams({date: dateString})}/>
                     </div>
-                    {state.total === 0 && <Empty></Empty>}
+                    {state.total === 0 && <Empty/>}
                     {state.total > 0 && <p>{state.total} results</p>}
                     <div>
                         {state.results.map((item, index) =>

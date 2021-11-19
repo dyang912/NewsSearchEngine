@@ -3,9 +3,15 @@
     overflow: auto;
 }
 
+.logo {
+    width: 400px;
+    vertical-align: center;
+    margin-bottom: 10px;
+}
+
 .search {
     text-align: center;
-    margin-top: 30vh;
+    margin: 25vh auto auto;
 }
 
 .result {
