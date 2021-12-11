@@ -23,10 +23,7 @@ file_name = ''
 
 today = datetime.datetime.today()
 year = today.year
-month = today.month - 1
-if month < 1:
-    year -= 1
-    month = 12
+month = today.month
 
 for file in my_bucket.objects.filter(Prefix='crawl-data/CC-NEWS/' + str(year) + "/" + str(month)):
     if str(file.key) > file_name:
