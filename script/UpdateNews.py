@@ -29,17 +29,21 @@ for file in my_bucket.objects.filter(Prefix='crawl-data/CC-NEWS/' + str(year) + 
     if str(file.key) > file_name:
         file_name = str(file.key)
 
-if not os.path.exists("data"):
-    my_bucket.download_file(file_name, "data")
+if os.path.exists("data"):
+    os.remove('data')
+my_bucket.download_file(file_name, "data")
 print("download finish")
 
 
 def get_text_bs(html):
     soup = BeautifulSoup(html, 'lxml')
 
+    if soup.body is None or soup.html is None:
+        return None, None, None
+
     body = soup.body
     lang = soup.html.get('lang')
-    if body is None or lang is None:
+    if lang is None:
         return None, None, None
 
     for tag in body.select('script'):
@@ -85,6 +89,8 @@ def process_warc(f_name, parser, limit=10000):
             records.append((url, title, doc))
 
         n_documents += 1
+        if n_documents % 500 == 0:
+            print("parsing:", n_documents, "/", limit)
 
         if i > limit:
             break
@@ -100,6 +106,7 @@ awsauth = AWS4Auth(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, ELASTIC_SEARCH_REGI
 
 es_url = ELASTIC_SEARCH_HOST + ELASTIC_SEARCH_INDEX
 
+idx_start = (today.day % 3) * 3000
 inserted = 0
 for i, rec in enumerate(files):
     payload = {
@@ -111,7 +118,7 @@ for i, rec in enumerate(files):
         "doc_as_upsert": True
     }
 
-    r = requests.post(es_url + "/_update/" + str(i), auth=awsauth, json=payload)
+    r = requests.post(es_url + "/_update/" + str(i + idx_start), auth=awsauth, json=payload)
     if r.ok:
         inserted += 1
 
