@@ -25,7 +25,7 @@ today = datetime.datetime.today()
 year = today.year
 month = today.month
 
-for file in my_bucket.objects.filter(Prefix='crawl-data/CC-NEWS/' + str(year) + "/" + str(month)):
+for file in my_bucket.objects.filter(Prefix='crawl-data/CC-NEWS/' + str(year) + "/{:02d}".format(month)):
     if str(file.key) > file_name:
         file_name = str(file.key)
 
